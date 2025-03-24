@@ -1,0 +1,11 @@
+import React from 'react';
+
+const __VIEW_NAME__ = () => {
+  return (
+    <div>
+      <h1>__VIEW_NAME__ View</h1>
+    </div>
+  );
+};
+
+export default __VIEW_NAME__;
