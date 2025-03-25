@@ -22,14 +22,22 @@
     "copy-templates": "mkdir -p dist/templates && cp src/templates/*.template dist/templates/",
     "start": "node dist/index.js",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx}\""
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix"
   },
   "dependencies": {
     "commander": "^8.0.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.23.0",
     "@types/node": "^16.0.0",
+    "eslint": "^9.23.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.5",
+    "globals": "^16.0.0",
     "prettier": "^3.5.3",
-    "typescript": "^4.0.0"
+    "typescript": "^4.0.0",
+    "typescript-eslint": "^8.28.0"
   }
 }

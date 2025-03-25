@@ -19,7 +19,7 @@ export class Processor {
         `${viewName}.${extension}`,
       );
       fs.writeFileSync(outputPath, content, "utf-8");
-      console.log(`Created ${viewName}.${extension}`);
+      console.info(`Created ${viewName}.${extension}`);
     } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "An error occurred";
