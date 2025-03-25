@@ -1,16 +1,28 @@
-#!/usr/bin/env node
+import { Command } from "commander";
+import { ComponentCreator } from "./commands/create";
 
-import { Command } from 'commander';
-import { createComponent } from './commands/create';
+class CLI {
+  private program: Command;
 
-const program = new Command();
+  constructor() {
+    this.program = new Command();
+    this.configureCommands();
+  }
 
-program
-  .command('create')
-  .option('--template <template>', 'Template type (component/view)')
-  .option('--view <view>', 'View name')
-  .action((options) => {
-    createComponent(options);
-  });
+  private configureCommands(): void {
+    this.program
+      .command("create")
+      .option("--template <template>", "Template type (component/view)")
+      .option("--view <view>", "View name")
+      .action((options) => {
+        ComponentCreator.createComponent(options);
+      });
+  }
 
-program.parse(process.argv);
+  public run(): void {
+    this.program.parse(process.argv);
+  }
+}
+
+const cli = new CLI();
+cli.run();
