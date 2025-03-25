@@ -1,14 +1,14 @@
 {
-  "name": "react-template-cli",
+  "name": "ra-cli",
   "version": "1.0.0",
   "description": "CLI tool to generate React component templates",
-  "homepage": "https://github.com/carpediem23/react-template-cli#readme",
+  "homepage": "https://github.com/carpediem23/ra-template-cli#readme",
   "bugs": {
-    "url": "https://github.com/carpediem23/react-template-cli/issues"
+    "url": "https://github.com/carpediem23/ra-template-cli/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/carpediem23/react-template-cli.git"
+    "url": "git+https://github.com/carpediem23/ra-template-cli.git"
   },
   "license": "ISC",
   "author": "",

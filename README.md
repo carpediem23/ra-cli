@@ -1,1 +1,1 @@
-# react-template-cli
+# ra-cli
