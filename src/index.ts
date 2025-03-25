@@ -1,5 +1,4 @@
 import { Command } from "commander";
-import { ComponentCreator } from "./commands/create";
 
 class CLI {
   private program: Command;
@@ -10,12 +9,10 @@ class CLI {
   }
 
   private configureCommands(): void {
-    this.program
-      .command("create")
-      .option("--template <template>", "Template type (component)")
-      .option("--view <view>", "View name")
-      .action((options) => {
-        ComponentCreator.createComponent(options);
+    this.program.version("1.0.0")
+      .command("hello")
+      .action(() => {
+        console.info("hello from ra cli");
       });
   }
 
