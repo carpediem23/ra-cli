@@ -1,4 +1,4 @@
-import { TemplateProcessor } from "../utils/templateProcessor";
+import { Processor } from "../utils/processor";
 import { ICreateOptions } from "../interfaces/commands.type";
 
 export class ComponentCreator {
@@ -12,6 +12,6 @@ export class ComponentCreator {
 
     const extension = "tsx";
     const templatePath = `../templates/${template}.${extension}.template`;
-    TemplateProcessor.processTemplate(templatePath, view, extension);
+    Processor.processTemplate(templatePath, view, extension);
   }
 }

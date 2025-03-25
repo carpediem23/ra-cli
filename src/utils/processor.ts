@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-export class TemplateProcessor {
+export class Processor {
   static processTemplate(
     templatePath: string,
     viewName: string,
