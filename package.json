@@ -25,7 +25,7 @@
     "node": ">=18.0.0"
   },
   "bin": {
-    "ra": "./bin/ra.js"
+    "ra": "bin/ra.js"
   },
   "files": [
     "dist",
