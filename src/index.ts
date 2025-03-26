@@ -9,7 +9,8 @@ class CLI {
   }
 
   private configureCommands(): void {
-    this.program.version("1.0.0")
+    this.program
+      .version("1.0.0")
       .command("hello")
       .action(() => {
         console.info("hello from ra cli");
