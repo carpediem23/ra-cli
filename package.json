@@ -11,7 +11,7 @@
     "url": "git+https://github.com/carpediem23/ra-template-cli.git"
   },
   "license": "ISC",
-  "author": "",
+  "author": "Alptug Carpediem <your.email@example.com> (https://github.com/carpediem23)",
   "type": "commonjs",
   "main": "src/index.ts",
   "keywords": [
