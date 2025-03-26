@@ -1,0 +1,5 @@
+type {{TypeName}} = {
+  // Define your type properties here
+};
+
+export default {{TypeName}};

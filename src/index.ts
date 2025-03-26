@@ -1,20 +1,53 @@
 import { Command } from "commander";
+import { Commands } from "./commands/commands";
 
-class CLI {
+class RACLI {
   private program: Command;
+  private commands: Commands;
 
   constructor() {
     this.program = new Command();
+    this.commands = new Commands();
     this.configureCommands();
   }
 
   private configureCommands(): void {
     this.program
       .version("1.0.0")
-      .command("hello")
-      .action(() => {
-        console.info("hello from ra cli");
+      .command("create")
+      .description("Create React components, types, interfaces or hooks")
+      .option("-c, --component", "Create a React component")
+      .option("-t, --type", "Create a TypeScript type")
+      .option("-i, --interface", "Create a TypeScript interface")
+      .option("-h, --hook", "Create a React hook")
+      .requiredOption("-n, --name <name>", "Name of the item to create")
+      .action((options) => {
+        if (options.component) {
+          this.commands.createComponent(options.name);
+        } else if (options.type) {
+          this.commands.createType(options.name);
+        } else if (options.interface) {
+          this.commands.createInterface(options.name);
+        } else if (options.hook) {
+          this.commands.createHook(options.name);
+        } else {
+          console.info(
+            "Please specify what to create (--component, --type, --interface, or --hook)",
+          );
+        }
       });
+
+    this.program.on("command:*", (operands) => {
+      console.error(`Error: Unknown command '${operands[0]}'`);
+      const availableCommands = this.program.commands.map((cmd) => cmd.name());
+      if (availableCommands.length > 0) {
+        console.error("Available commands:", availableCommands.join(", "));
+      }
+      console.error("");
+      this.program.help();
+    });
+
+    this.program.showSuggestionAfterError(true);
   }
 
   public run(): void {
@@ -22,5 +55,6 @@ class CLI {
   }
 }
 
-const cli = new CLI();
+const cli = new RACLI();
+
 cli.run();

@@ -1,0 +1,5 @@
+interface {{InterfaceName}} {
+  // Define your interface properties here
+}
+
+export default {{InterfaceName}}
