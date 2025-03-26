@@ -14,9 +14,23 @@
   "author": "",
   "type": "commonjs",
   "main": "src/index.ts",
+  "keywords": [
+    "react",
+    "cli",
+    "component",
+    "generator",
+    "template"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "bin": {
     "ra": "./bin/ra.js"
   },
+  "files": [
+    "dist",
+    "bin"
+  ],
   "scripts": {
     "build": "tsc && npm run copy-templates",
     "copy-templates": "mkdir -p dist/templates && cp src/templates/*.template dist/templates/",
