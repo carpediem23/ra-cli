@@ -1,0 +1,13 @@
+import { useState } from 'react';
+
+export default function {{HookName}}() {
+  // Add your hook logic here
+  const [state, setState] = useState<any>(null);
+
+  // Define your hook functions
+
+  return {
+    state,
+    // Return hook functions and state
+  };
+}

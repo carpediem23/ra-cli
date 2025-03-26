@@ -4,20 +4,37 @@ import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 
 export default defineConfig([
-  { files: ["**/*.{js,mjs,cjs,ts}"] },
-  { files: ["**/*.js"], languageOptions: { sourceType: "script" } },
   {
-    files: ["**/*.{js,mjs,cjs,ts}"],
-    languageOptions: { globals: globals.node },
-  },
-  {
-    files: ["**/*.{js,mjs,cjs,ts}"],
-    plugins: { js },
-    extends: ["js/recommended"],
+    files: ["**/*.ts", "**/*.tsx"],
+    plugins: {
+      "@typescript-eslint": tseslint.plugin,
+    },
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        project: "./tsconfig.json",
+      },
+    },
     rules: {
       semi: ["error", "always"],
-      "no-console": ["error", { allow: ["error", "warn", "info"] }],
+      "no-console": [
+        "error",
+        {
+          allow: ["warn", "error", "info"],
+        },
+      ],
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          args: "all",
+          argsIgnorePattern: "^_",
+          caughtErrors: "all",
+          caughtErrorsIgnorePattern: "^_",
+          destructuredArrayIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          ignoreRestSiblings: true,
+        },
+      ],
     },
   },
-  tseslint.configs.recommended,
 ]);
