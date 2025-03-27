@@ -2,6 +2,8 @@
 
 A CLI tool for React and TypeScript developers to quickly generate components, types, interfaces, and hooks.
 
+## Need Contirbutors 📢📢📢
+
 ## Installation
 
 ```bash
@@ -42,16 +44,4 @@ npx ra create --hook --name HookSample
 ```
 
 This will create a React hook in `HookSample.ts` that is exported as the default export.
-
-## Development
-
-```bash
-# Install dependencies
-npm install
-
-# Build the project
-npm run build
-
-# Run the CLI
-node ./dist/index.js hello
 ```
