@@ -72,4 +72,23 @@ export class Commands {
       );
     }
   }
+
+  createContext(name: string): void {
+    try {
+      const contextTemplate = getTemplateContent("context.template");
+      const formattedContent = contextTemplate.replace(
+        /{{ContextName}}/g,
+        name,
+      );
+      const rootDir = process.cwd();
+      const contextFilePath = path.join(rootDir, `${name}Context.tsx`);
+
+      fs.writeFileSync(contextFilePath, formattedContent);
+      console.info(`Context ${name}Context created successfully!`);
+    } catch (error) {
+      console.error(
+        `Error creating context: ${error instanceof Error ? error.message : String(error)}`,
+      );
+    }
+  }
 }

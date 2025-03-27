@@ -15,11 +15,14 @@ class RACLI {
     this.program
       .version("1.0.0")
       .command("create")
-      .description("Create React components, types, interfaces or hooks")
+      .description(
+        "Create React components, types, interfaces, hooks or contexts",
+      )
       .option("-c, --component", "Create a React component")
       .option("-t, --type", "Create a TypeScript type")
       .option("-i, --interface", "Create a TypeScript interface")
       .option("-h, --hook", "Create a React hook")
+      .option("-x, --context", "Create a React context")
       .requiredOption("-n, --name <name>", "Name of the item to create")
       .action((options) => {
         if (options.component) {
@@ -30,9 +33,11 @@ class RACLI {
           this.commands.createInterface(options.name);
         } else if (options.hook) {
           this.commands.createHook(options.name);
+        } else if (options.context) {
+          this.commands.createContext(options.name);
         } else {
           console.info(
-            "Please specify what to create (--component, --type, --interface, or --hook)",
+            "Please specify what to create (--component, --type, --interface, --hook, or --context)",
           );
         }
       });
