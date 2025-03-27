@@ -8,11 +8,11 @@ interface {{ContextName}}ContextType {
 
 const {{ContextName}}Context = createContext<{{ContextName}}ContextType | undefined>(undefined);
 
-interface {{ContextName}}ProviderProps {
+interface {{ContextName}}Props {
   children: ReactNode;
 }
 
-export const {{ContextName}}Provider: React.FC<{{ContextName}}ProviderProps> = ({ children }) => {
+export const {{ContextName}}: React.FC<{{ContextName}}Props> = ({ children }) => {
   const [state, setState] = useState<any>(null);
 
   const value = {
@@ -30,7 +30,7 @@ export const {{ContextName}}Provider: React.FC<{{ContextName}}ProviderProps> = (
 export const use{{ContextName}} = (): {{ContextName}}ContextType => {
   const context = useContext({{ContextName}}Context);
   if (context === undefined) {
-    throw new Error('use{{ContextName}} must be used within a {{ContextName}}Provider');
+    throw new Error('use{{ContextName}} must be used within a {{ContextName}}');
   }
   return context;
 };

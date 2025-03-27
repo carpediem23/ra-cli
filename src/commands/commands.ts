@@ -81,10 +81,10 @@ export class Commands {
         name,
       );
       const rootDir = process.cwd();
-      const contextFilePath = path.join(rootDir, `${name}Context.tsx`);
+      const contextFilePath = path.join(rootDir, `${name}.tsx`);
 
       fs.writeFileSync(contextFilePath, formattedContent);
-      console.info(`Context ${name}Context created successfully!`);
+      console.info(`Context ${name} created successfully!`);
     } catch (error) {
       console.error(
         `Error creating context: ${error instanceof Error ? error.message : String(error)}`,
