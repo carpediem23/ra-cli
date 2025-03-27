@@ -1,0 +1,36 @@
+import React, { createContext, useContext, ReactNode, useState } from 'react';
+
+interface {{ContextName}}ContextType {
+  // Define your context state and functions here
+  state: any;
+  setState: (value: any) => void;
+}
+
+const {{ContextName}}Context = createContext<{{ContextName}}ContextType | undefined>(undefined);
+
+interface {{ContextName}}ProviderProps {
+  children: ReactNode;
+}
+
+export const {{ContextName}}Provider: React.FC<{{ContextName}}ProviderProps> = ({ children }) => {
+  const [state, setState] = useState<any>(null);
+
+  const value = {
+    state,
+    setState,
+  };
+
+  return (
+    <{{ContextName}}Context.Provider value={value}>
+      {children}
+    </{{ContextName}}Context.Provider>
+  );
+};
+
+export const use{{ContextName}} = (): {{ContextName}}ContextType => {
+  const context = useContext({{ContextName}}Context);
+  if (context === undefined) {
+    throw new Error('use{{ContextName}} must be used within a {{ContextName}}Provider');
+  }
+  return context;
+};
