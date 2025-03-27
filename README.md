@@ -48,7 +48,7 @@ This will create a React hook in `HookSample.ts` that is exported as the default
 ### Generate a React Context
 
 ```bash
-npx ra create --context --name Sample
+npx ra create --context --name ContextSample
 ```
 
-This will create a React context in `SampleContext.tsx` that includes a context provider and a custom hook to use the context.
+This will create a React context in `ContextSample.tsx` that includes a context component named `ContextSample` and a custom hook named `useContextSample` to use the context.
