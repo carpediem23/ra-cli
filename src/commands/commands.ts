@@ -1,9 +1,12 @@
 import fs from "fs";
 import path from "path";
-import { getTemplateContent } from "../utils/fileUtils";
+import {
+  getTemplateContent,
+  ensureDirectoryExistence,
+} from "../utils/fileUtils";
 
 export class Commands {
-  createComponent(name: string): void {
+  createComponent(name: string, targetPath?: string): void {
     try {
       const componentTemplate = getTemplateContent("component.template");
       const formattedContent = componentTemplate.replace(
@@ -11,7 +14,15 @@ export class Commands {
         name,
       );
       const rootDir = process.cwd();
-      const componentFilePath = path.join(rootDir, `${name}.tsx`);
+
+      let componentFilePath: string;
+      if (targetPath) {
+        const fullTargetPath = path.join(rootDir, targetPath);
+        ensureDirectoryExistence(fullTargetPath);
+        componentFilePath = path.join(fullTargetPath, `${name}.tsx`);
+      } else {
+        componentFilePath = path.join(rootDir, `${name}.tsx`);
+      }
 
       fs.writeFileSync(componentFilePath, formattedContent);
       console.info(`Component ${name} created successfully!`);
@@ -22,12 +33,20 @@ export class Commands {
     }
   }
 
-  createType(name: string): void {
+  createType(name: string, targetPath?: string): void {
     try {
       const typeTemplate = getTemplateContent("type.template");
       const formattedContent = typeTemplate.replace(/{{TypeName}}/g, name);
       const rootDir = process.cwd();
-      const typeFilePath = path.join(rootDir, `${name}.ts`);
+
+      let typeFilePath: string;
+      if (targetPath) {
+        const fullTargetPath = path.join(rootDir, targetPath);
+        ensureDirectoryExistence(fullTargetPath);
+        typeFilePath = path.join(fullTargetPath, `${name}.ts`);
+      } else {
+        typeFilePath = path.join(rootDir, `${name}.ts`);
+      }
 
       fs.writeFileSync(typeFilePath, formattedContent);
       console.info(`Type ${name} created successfully!`);
@@ -38,7 +57,7 @@ export class Commands {
     }
   }
 
-  createInterface(name: string): void {
+  createInterface(name: string, targetPath?: string): void {
     try {
       const interfaceTemplate = getTemplateContent("interface.template");
       const formattedContent = interfaceTemplate.replace(
@@ -46,7 +65,15 @@ export class Commands {
         name,
       );
       const rootDir = process.cwd();
-      const interfaceFilePath = path.join(rootDir, `${name}.ts`);
+
+      let interfaceFilePath: string;
+      if (targetPath) {
+        const fullTargetPath = path.join(rootDir, targetPath);
+        ensureDirectoryExistence(fullTargetPath);
+        interfaceFilePath = path.join(fullTargetPath, `${name}.ts`);
+      } else {
+        interfaceFilePath = path.join(rootDir, `${name}.ts`);
+      }
 
       fs.writeFileSync(interfaceFilePath, formattedContent);
       console.info(`Interface ${name} created successfully!`);
@@ -57,12 +84,20 @@ export class Commands {
     }
   }
 
-  createHook(name: string): void {
+  createHook(name: string, targetPath?: string): void {
     try {
       const hookTemplate = getTemplateContent("hook.template");
       const formattedContent = hookTemplate.replace(/{{HookName}}/g, name);
       const rootDir = process.cwd();
-      const hookFilePath = path.join(rootDir, `${name}.ts`);
+
+      let hookFilePath: string;
+      if (targetPath) {
+        const fullTargetPath = path.join(rootDir, targetPath);
+        ensureDirectoryExistence(fullTargetPath);
+        hookFilePath = path.join(fullTargetPath, `${name}.ts`);
+      } else {
+        hookFilePath = path.join(rootDir, `${name}.ts`);
+      }
 
       fs.writeFileSync(hookFilePath, formattedContent);
       console.info(`Hook ${name} created successfully!`);
@@ -73,7 +108,7 @@ export class Commands {
     }
   }
 
-  createContext(name: string): void {
+  createContext(name: string, targetPath?: string): void {
     try {
       const contextTemplate = getTemplateContent("context.template");
       const formattedContent = contextTemplate.replace(
@@ -81,7 +116,15 @@ export class Commands {
         name,
       );
       const rootDir = process.cwd();
-      const contextFilePath = path.join(rootDir, `${name}.tsx`);
+
+      let contextFilePath: string;
+      if (targetPath) {
+        const fullTargetPath = path.join(rootDir, targetPath);
+        ensureDirectoryExistence(fullTargetPath);
+        contextFilePath = path.join(fullTargetPath, `${name}.tsx`);
+      } else {
+        contextFilePath = path.join(rootDir, `${name}.tsx`);
+      }
 
       fs.writeFileSync(contextFilePath, formattedContent);
       console.info(`Context ${name} created successfully!`);
