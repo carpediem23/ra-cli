@@ -23,18 +23,19 @@ class RACLI {
       .option("-i, --interface", "Create a TypeScript interface")
       .option("-h, --hook", "Create a React hook")
       .option("-x, --context", "Create a React context")
+      .option("-p, --path <path>", "Path to create the file (optional)")
       .requiredOption("-n, --name <name>", "Name of the item to create")
       .action((options) => {
         if (options.component) {
-          this.commands.createComponent(options.name);
+          this.commands.createComponent(options.name, options.path);
         } else if (options.type) {
-          this.commands.createType(options.name);
+          this.commands.createType(options.name, options.path);
         } else if (options.interface) {
-          this.commands.createInterface(options.name);
+          this.commands.createInterface(options.name, options.path);
         } else if (options.hook) {
-          this.commands.createHook(options.name);
+          this.commands.createHook(options.name, options.path);
         } else if (options.context) {
-          this.commands.createContext(options.name);
+          this.commands.createContext(options.name, options.path);
         } else {
           console.info(
             "Please specify what to create (--component, --type, --interface, --hook, or --context)",

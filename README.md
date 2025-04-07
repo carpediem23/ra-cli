@@ -4,6 +4,9 @@ A CLI tool for React and TypeScript developers to quickly generate components, t
 
 ## Need Contirbutors 📢📢📢
 
+## 🪲 Please create a issue if you want to contribute to this project. I will assign you a task and you can work on it.
+[Open Issues](https://github.com/carpediem23/ra-cli/issues)
+
 ## Installation
 
 ```bash
@@ -52,3 +55,15 @@ npx ra create --context --name ContextSample
 ```
 
 This will create a React context in `ContextSample.tsx` that includes a context component named `ContextSample` and a custom hook named `useContextSample` to use the context.
+
+### Specifying a Path
+
+You can specify where to create the files using the `--path` option:
+
+```bash
+npx ra create --component --name Button --path src/components
+```
+
+This will create `Button.tsx` in the `src/components` directory. If the directory doesn't exist, it will be created automatically.
+
+The path option works with all creation commands (component, type, interface, hook, context).
