@@ -4,8 +4,8 @@ A CLI tool for React and TypeScript developers to quickly generate components, t
 
 ## Need Contirbutors 📢📢📢
 
-## 🪲 Please create a issue if you want to contribute to this project. I will assign you a task and you can work on it.
-[Open Issues](https://github.com/carpediem23/ra-cli/issues)
+## 🪲 Please create a issue if you want to contribute to this project.
+[https://github.com/carpediem23/ra-cli/issues](https://github.com/carpediem23/ra-cli/issues)
 
 ## Installation
 

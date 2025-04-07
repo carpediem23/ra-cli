@@ -1,5 +1,7 @@
 import { Command } from "commander";
 import { Commands } from "./commands/commands";
+import fs from "fs";
+import path from "path";
 
 class RACLI {
   private program: Command;
@@ -11,9 +13,21 @@ class RACLI {
     this.configureCommands();
   }
 
+  private getVersion(): string {
+    try {
+      const packageJsonPath = path.resolve(__dirname, "../package.json");
+      const packageJsonContent = fs.readFileSync(packageJsonPath, "utf8");
+      const packageJson = JSON.parse(packageJsonContent);
+      return packageJson.version || "1.0.0";
+    } catch (error) {
+      console.error("Error reading version from package.json:", error);
+      return "1.0.0";
+    }
+  }
+
   private configureCommands(): void {
-    this.program
-      .version("1.0.0")
+    const createCommand = this.program
+      .version(this.getVersion())
       .command("create")
       .description(
         "Create React components, types, interfaces, hooks or contexts",
@@ -42,6 +56,19 @@ class RACLI {
           );
         }
       });
+
+    createCommand.addHelpText(
+      "after",
+      `
+      Examples:
+        $ ra create --component --name Button
+        $ ra create --type --name TUserData
+        $ ra create --interface --name IUserProfile
+        $ ra create --hook --name useAuth
+        $ ra create --context --name Theme
+        $ ra create --component --name Header --path src/components
+      `,
+    );
 
     this.program.on("command:*", (operands) => {
       console.error(`Error: Unknown command '${operands[0]}'`);
