@@ -1,6 +1,6 @@
 {
   "name": "@carpediem23/ra-cli",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "CLI tool to generate React component templates",
   "homepage": "https://github.com/carpediem23/ra-cli#readme",
   "bugs": {
