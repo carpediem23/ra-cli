@@ -2,6 +2,7 @@ import { Command } from "commander";
 import { Commands } from "./commands/commands";
 import fs from "fs";
 import path from "path";
+import chalk from "chalk";
 
 class RACLI {
   private program: Command;
@@ -20,7 +21,10 @@ class RACLI {
       const packageJson = JSON.parse(packageJsonContent);
       return packageJson.version || "1.0.0";
     } catch (error) {
-      console.error("Error reading version from package.json:", error);
+      console.error(
+        chalk.red("Error reading version from package.json:"),
+        error,
+      );
       return "1.0.0";
     }
   }
@@ -30,7 +34,9 @@ class RACLI {
       .version(this.getVersion())
       .command("create")
       .description(
-        "Create React components, types, interfaces, hooks or contexts",
+        chalk.blueBright(
+          "Create React components, types, interfaces, hooks or contexts",
+        ),
       )
       .option("-c, --component", "Create a React component")
       .option("-t, --type", "Create a TypeScript type")
@@ -52,7 +58,9 @@ class RACLI {
           this.commands.createContext(options.name, options.path);
         } else {
           console.info(
-            "Please specify what to create (--component, --type, --interface, --hook, or --context)",
+            chalk.yellow(
+              "Please specify what to create (--component, --type, --interface, --hook, or --context)",
+            ),
           );
         }
       });
@@ -60,21 +68,24 @@ class RACLI {
     createCommand.addHelpText(
       "after",
       `
-      Examples:
-        $ ra create --component --name Button
-        $ ra create --type --name TUserData
-        $ ra create --interface --name IUserProfile
-        $ ra create --hook --name useAuth
-        $ ra create --context --name Theme
-        $ ra create --component --name Header --path src/components
+      ${chalk.cyan("Examples:")}
+        $ ${chalk.green("ra create --component --name Button")}
+        $ ${chalk.green("ra create --type --name TUserData")}
+        $ ${chalk.green("ra create --interface --name IUserProfile")}
+        $ ${chalk.green("ra create --hook --name useAuth")}
+        $ ${chalk.green("ra create --context --name Theme")}
+        $ ${chalk.green("ra create --component --name Header --path src/components")}
       `,
     );
 
     this.program.on("command:*", (operands) => {
-      console.error(`Error: Unknown command '${operands[0]}'`);
+      console.error(chalk.red(`Error: Unknown command '${operands[0]}'`));
       const availableCommands = this.program.commands.map((cmd) => cmd.name());
       if (availableCommands.length > 0) {
-        console.error("Available commands:", availableCommands.join(", "));
+        console.error(
+          chalk.yellow("Available commands:"),
+          chalk.green(availableCommands.join(", ")),
+        );
       }
       console.error("");
       this.program.help();

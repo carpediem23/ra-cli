@@ -4,6 +4,7 @@ import {
   getTemplateContent,
   ensureDirectoryExistence,
 } from "../utils/fileUtils";
+import chalk from "chalk";
 
 export class Commands {
   createComponent(name: string, targetPath?: string): void {
@@ -25,10 +26,14 @@ export class Commands {
       }
 
       fs.writeFileSync(componentFilePath, formattedContent);
-      console.info(`Component ${name} created successfully!`);
+      console.info(
+        chalk.green(`Component ${chalk.bold(name)} created successfully!`),
+      );
     } catch (error) {
       console.error(
-        `Error creating component: ${error instanceof Error ? error.message : String(error)}`,
+        chalk.red(
+          `Error creating component: ${error instanceof Error ? error.message : String(error)}`,
+        ),
       );
     }
   }
@@ -49,10 +54,14 @@ export class Commands {
       }
 
       fs.writeFileSync(typeFilePath, formattedContent);
-      console.info(`Type ${name} created successfully!`);
+      console.info(
+        chalk.green(`Type ${chalk.bold(name)} created successfully!`),
+      );
     } catch (error) {
       console.error(
-        `Error creating type: ${error instanceof Error ? error.message : String(error)}`,
+        chalk.red(
+          `Error creating type: ${error instanceof Error ? error.message : String(error)}`,
+        ),
       );
     }
   }
@@ -76,10 +85,14 @@ export class Commands {
       }
 
       fs.writeFileSync(interfaceFilePath, formattedContent);
-      console.info(`Interface ${name} created successfully!`);
+      console.info(
+        chalk.green(`Interface ${chalk.bold(name)} created successfully!`),
+      );
     } catch (error) {
       console.error(
-        `Error creating interface: ${error instanceof Error ? error.message : String(error)}`,
+        chalk.red(
+          `Error creating interface: ${error instanceof Error ? error.message : String(error)}`,
+        ),
       );
     }
   }
@@ -100,10 +113,14 @@ export class Commands {
       }
 
       fs.writeFileSync(hookFilePath, formattedContent);
-      console.info(`Hook ${name} created successfully!`);
+      console.info(
+        chalk.green(`Hook ${chalk.bold(name)} created successfully!`),
+      );
     } catch (error) {
       console.error(
-        `Error creating hook: ${error instanceof Error ? error.message : String(error)}`,
+        chalk.red(
+          `Error creating hook: ${error instanceof Error ? error.message : String(error)}`,
+        ),
       );
     }
   }
@@ -127,10 +144,14 @@ export class Commands {
       }
 
       fs.writeFileSync(contextFilePath, formattedContent);
-      console.info(`Context ${name} created successfully!`);
+      console.info(
+        chalk.green(`Context ${chalk.bold(name)} created successfully!`),
+      );
     } catch (error) {
       console.error(
-        `Error creating context: ${error instanceof Error ? error.message : String(error)}`,
+        chalk.red(
+          `Error creating context: ${error instanceof Error ? error.message : String(error)}`,
+        ),
       );
     }
   }
